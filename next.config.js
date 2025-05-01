@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export', // Removed this line to enable server-side routing for next-intl
   distDir: 'out',
   images: {
     remotePatterns: [

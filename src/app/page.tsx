@@ -1,7 +1,7 @@
 import HeroSection from "@/components/home/HeroSection";
 import AboutSection from "@/components/home/AboutSection";
 import ProductsSection from "@/components/home/ProductsSection";
-import NewsSection from "@/components/home/NewsSection";
+// import NewsSection from "@/components/home/NewsSection"; // Removed NewsSection
 import ValuesSection from "@/components/home/ValuesSection";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       <AboutSection />
       <ProductsSection />
       <ValuesSection />
-      <NewsSection />
+      {/* <NewsSection /> */}{/* Removed NewsSection */}
     </>
   );
 }

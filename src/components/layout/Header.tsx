@@ -1,12 +1,17 @@
 "use client";
 
-import Link from 'next/link';
+// Use ONLY next-intl navigation imports here
+import { Link, usePathname } from 'next-intl/navigation'; 
 import Image from 'next/image';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useTranslations } from 'next-intl'; 
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // usePathname from next-intl/navigation gets the path *without* locale
+  const pathname = usePathname(); 
+  const t = useTranslations('Header'); 
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -14,27 +19,31 @@ const Header = () => {
 
   return (
     <header className="relative z-10">
-      {/* Top bar with Sustainability Report and Language Selector */}
+      {/* Top bar */}
       <div className="marasca-orange py-2">
         <div className="container-marasca flex justify-between items-center">
-          <Link
-            href="#"
+          {/* Use regular <a> for external/non-localized links or next-intl Link if it's internal */}
+          <a 
+            href="#" // Replace with actual sustainability report link if available
             className="text-white hover:text-white/80 transition-colors text-sm md:text-base"
           >
-            Báo cáo phát triển bền vững
-          </Link>
+             {t('sustainabilityReport')}
+          </a>
           <div className="flex items-center gap-2">
-            <span className="text-white text-sm md:text-base">Ngôn ngữ / Languages:</span>
-            <Link href="#" className="block">
+            <span className="text-white text-sm md:text-base">
+               {t('languageLabel')}
+            </span>
+            {/* Language Switcher Links - usePathname from next-intl works directly */}
+            <Link href={pathname} locale="vi" className="block">
               <Image
                 src="/images/vietnam-flag.png"
-                alt="Tiếng Việt"
+                alt={t('nav.home')} 
                 width={24}
                 height={16}
                 className="hover:opacity-80 transition-opacity"
               />
             </Link>
-            <Link href="#" className="block">
+            <Link href={pathname} locale="en" className="block">
               <Image
                 src="/images/us-flag.png"
                 alt="English"
@@ -43,7 +52,7 @@ const Header = () => {
                 className="hover:opacity-80 transition-opacity"
               />
             </Link>
-            <Link href="#" className="block">
+            <Link href={pathname} locale="zh" className="block">
               <Image
                 src="/images/china-flag.png"
                 alt="中文"
@@ -59,18 +68,18 @@ const Header = () => {
       {/* Main Navigation */}
       <nav className="bg-marasca-dark py-4">
         <div className="container-marasca flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/" className="block">
+          {/* Logo link - points to root of current locale */}
+          <Link href="/" className="block"> 
             <Image
               src="/images/logo.png"
               alt="Cao Bang Tobacco"
-              width={140}
-              height={60}
+              width={100} 
+              height={43}
               className="h-auto"
             />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Use next-intl Link */}
           <div className="hidden md:flex items-center">
             <ul className="flex space-x-6 items-center">
               <li>
@@ -78,15 +87,15 @@ const Header = () => {
                   href="/"
                   className="text-white hover:text-primary transition-colors"
                 >
-                  Trang Chủ
+                  {t('nav.home')}
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/quem-somos"
+                  href="/quem-somos" // Will be prefixed with locale automatically
                   className="text-white hover:text-primary transition-colors"
                 >
-                  Giới Thiệu
+                   {t('nav.about')}
                 </Link>
               </li>
               <li>
@@ -94,7 +103,7 @@ const Header = () => {
                   href="/atividades-e-produtos"
                   className="text-white hover:text-primary transition-colors"
                 >
-                  Sản Phẩm & Dịch Vụ
+                   {t('nav.products')}
                 </Link>
               </li>
               <li>
@@ -102,7 +111,7 @@ const Header = () => {
                   href="/noticias"
                   className="text-white hover:text-primary transition-colors"
                 >
-                  Tin Tức
+                   {t('nav.news')}
                 </Link>
               </li>
               <li>
@@ -110,7 +119,7 @@ const Header = () => {
                   href="/contato"
                   className="text-white hover:text-primary transition-colors"
                 >
-                  Liên Hệ
+                   {t('nav.contact')}
                 </Link>
               </li>
             </ul>
@@ -120,7 +129,7 @@ const Header = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMobileMenu}
-              aria-label="Toggle menu"
+              aria-label={t('nav.home')} 
               className="text-white p-2"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -129,7 +138,7 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* Mobile Navigation Menu */}
+      {/* Mobile Navigation Menu */} 
       {mobileMenuOpen && (
         <div className="md:hidden absolute w-full bg-marasca-dark shadow-lg z-50">
           <div className="container-marasca py-4">
@@ -140,7 +149,7 @@ const Header = () => {
                   className="text-white block py-2 hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Trang Chủ
+                   {t('nav.home')}
                 </Link>
               </li>
               <li>
@@ -149,7 +158,7 @@ const Header = () => {
                   className="text-white block py-2 hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Giới Thiệu
+                   {t('nav.about')}
                 </Link>
               </li>
               <li>
@@ -158,16 +167,16 @@ const Header = () => {
                   className="text-white block py-2 hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Sản Phẩm & Dịch Vụ
+                   {t('nav.products')}
                 </Link>
               </li>
-              <li>
+               <li>
                 <Link
                   href="/noticias"
                   className="text-white block py-2 hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Tin Tức
+                   {t('nav.news')}
                 </Link>
               </li>
               <li>
@@ -176,7 +185,7 @@ const Header = () => {
                   className="text-white block py-2 hover:text-primary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Liên Hệ
+                   {t('nav.contact')}
                 </Link>
               </li>
             </ul>

@@ -1,0 +1,32 @@
+{
+  "Header": {
+    "sustainabilityReport": "Sustainability Report",
+    "languageLabel": "Languages / Ngôn ngữ:",
+    "nav": {
+      "home": "Home",
+      "about": "About Us",
+      "products": "Products & Services",
+      "news": "News",
+      "contact": "Contact"
+    }
+  },
+  "Footer": {
+    "quote": "We appreciate your interest and look forward to positive feedback",
+    "statement": "We are always looking for better prospects for cooperation with markets. The company's goal is to constantly bring satisfaction to customers through criteria such as quality, competitive prices....",
+    "linksTitle": "Useful Links",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use",
+    "careers": "Careers",
+    "emailLink": "Email: ctythuoclacb@gmail.com",
+    "phoneLink": "Phone: 02066 286 286",
+    "hotlineLink": "Hotline: 0944 188 198",
+    "addressTitle": "Address",
+    "addressLine1": "Headquarters: Group 12, De Tham Ward",
+    "addressLine2": "Cao Bang City, Cao Bang Province",
+    "taxCode": "Tax Code: 4800 651 833",
+    "account1": "Account: 116000062757 (Vietinbank CB Branch)",
+    "account2": "Account: 8600003899 (BIDV CB Branch)",
+    "copyright": "© 2024 Cao Bang Tobacco Joint Stock Company – All rights reserved.",
+    "companyNameEn": "CAO BANG TOBACCO JOINT STOCK COMPANY"
+  }
+}

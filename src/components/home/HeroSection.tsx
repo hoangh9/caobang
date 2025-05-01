@@ -1,46 +1,54 @@
 "use client";
 
+import * as React from "react";
 import Image from 'next/image';
-import Link from 'next/link';
+import Autoplay from "embla-carousel-autoplay";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+const images = [
+  "/images/about-image.jpg",
+  "/images/hero-background.jpg",
+];
 
 const HeroSection = () => {
-  return (
-    <section className="relative h-[80vh] min-h-[500px]">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-background.jpg"
-          alt="Cao Bang Tobacco"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-30" />
-      </div>
+  const plugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
 
-      {/* Content */}
-      <div className="container-marasca relative z-10 h-full flex flex-col justify-center items-center text-center text-white">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-          Trách nhiệm và cam kết với sự phát triển bền vững
-        </h1>
-        <p className="text-lg md:text-xl max-w-3xl mb-8">
-          Công ty cổ phần thuốc lá Cao Bằng (CBT) chuyên cung cấp sản phẩm thuốc lá lá nguyên liệu, thuốc lá tách cọng chất lượng cao
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <Link
-            href="/quem-somos"
-            className="primary-button"
-          >
-            Tìm hiểu thêm về chúng tôi
-          </Link>
-          <Link
-            href="/contato"
-            className="bg-white text-primary px-6 py-2 rounded-md font-medium transition-colors hover:bg-white/90"
-          >
-            Liên hệ ngay
-          </Link>
-        </div>
-      </div>
+  return (
+    <section className="relative h-[80vh] min-h-[500px] w-full overflow-hidden border-4 border-red-500"> {/* Added border for debugging section */} 
+      <Carousel
+        plugins={[plugin.current]}
+        className="w-full h-full"
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+        opts={{
+          loop: true,
+        }}
+      >
+        <CarouselContent> {/* Removed h-full temporarily */}
+          {images.map((src, index) => (
+            <CarouselItem key={index} className="bg-blue-500"> {/* Removed h-full, added bg-blue-500 for debugging item */}
+              <div className="relative w-full h-full"> 
+                <Image
+                  src={src}
+                  alt={`Slide ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
     </section>
   );
 };

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from 'next/image';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function AtividadesEProdutos() {
   return (
@@ -10,8 +9,8 @@ export default function AtividadesEProdutos() {
       <section className="relative h-[40vh] min-h-[300px]">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/hero-background.jpg"
-            alt="Cao Bang Tobacco"
+            src="/images/hero-background.jpg" // Keep a relevant background
+            alt="Sản phẩm & Dịch vụ Cao Bang Tobacco"
             fill
             className="object-cover"
             priority
@@ -20,216 +19,110 @@ export default function AtividadesEProdutos() {
         </div>
         <div className="container-marasca relative z-10 h-full flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-            Atividades e Produtos
+            Sản phẩm & Dịch vụ
           </h1>
         </div>
       </section>
 
-      {/* Activities Section */}
+      {/* Main Business Activities Section */}
       <section className="py-16 bg-white">
         <div className="container-marasca">
-          <h2 className="text-3xl font-bold mb-8 text-center text-marasca-dark">
-            Atividades
+          <h2 className="section-title text-marasca-dark">
+            Lĩnh vực hoạt động chính
           </h2>
-
-          <div className="max-w-4xl mx-auto">
-            <p className="text-gray-700 mb-6">
-              A Cao Bang Tobacco atua na produção, beneficiamento e comercialização das variedades de tabaco Virgínia e Burley, baseando-se no cultivo integrado, ou seja, a empresa fornece sementes, agroquímicos, fertilizantes e assistência técnica especializada aos agricultores, para que em contrapartida os mesmos possam produzir o tabaco de acordo com os padrões de qualidade exigidos.
+          <div className="max-w-4xl mx-auto text-gray-700 space-y-4 text-center">
+            <p>
+              Công ty cổ phần thuốc lá Cao Bằng (CBT) là một trong những doanh nghiệp hàng đầu tỉnh Cao Bằng, tập trung vào các lĩnh vực sản xuất kinh doanh cốt lõi:
             </p>
-
-            <p className="text-gray-700 mb-6">
-              A empresa vem aumentando gradativamente sua participação no mercado, fornecendo tabaco para mais de 40 clientes nos cinco continentes, obedecendo rigorosamente os padrões de qualidade do produto e satisfação do cliente.
+            <ul className="list-disc list-inside space-y-2 text-left inline-block">
+              <li>Chuyên trồng cây thuốc lá tại các huyện Nguyên Bình, Quảng Hòa tỉnh Cao Bằng.</li>
+              <li>Chuyên cung cấp các sản phẩm nguyên liệu thuốc lá lá, nguyên liệu thuốc lá tách cọng chất lượng cao cho các đối tác trong và ngoài nước.</li>
+              <li>Bán buôn, bán lẻ sản phẩm thuốc lá điếu tại thị trường tỉnh Cao Bằng và phục vụ xuất khẩu.</li>
+            </ul>
+            <p>
+              Với nhiều năm kinh nghiệm, CBT đã khẳng định uy tín qua việc cung cấp sản phẩm đảm bảo chất lượng, phong cách phục vụ chuyên nghiệp và giá cả hợp lý, được nhiều khách hàng tin tưởng lựa chọn.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Processing Image Section */}
-      <section className="py-12 bg-marasca-light">
-        <div className="container-marasca">
-          <div className="relative h-[400px] md:h-[500px]">
-            <Image
-              src="/images/products-image.png"
-              alt="Processamento de tabaco"
-              fill
-              className="object-contain rounded-lg"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section className="py-16 bg-white">
-        <div className="container-marasca">
-          <h2 className="text-3xl font-bold mb-8 text-center text-marasca-dark">
-            Nossos produtos (Virginia e Burley):
-          </h2>
-
-          <Tabs defaultValue="laminas" className="max-w-4xl mx-auto">
-            <TabsList className="grid grid-cols-2 md:grid-cols-6 bg-gray-100 p-1 mb-8">
-              <TabsTrigger
-                value="laminas"
-                className="data-[state=active]:bg-marasca-orange data-[state=active]:text-white"
-              >
-                LÂMINAS
-              </TabsTrigger>
-              <TabsTrigger
-                value="fibras"
-                className="data-[state=active]:bg-marasca-orange data-[state=active]:text-white"
-              >
-                FIBRAS
-              </TabsTrigger>
-              <TabsTrigger
-                value="fines"
-                className="data-[state=active]:bg-marasca-orange data-[state=active]:text-white"
-              >
-                FINES
-              </TabsTrigger>
-              <TabsTrigger
-                value="scraps"
-                className="data-[state=active]:bg-marasca-orange data-[state=active]:text-white"
-              >
-                SCRAPS
-              </TabsTrigger>
-              <TabsTrigger
-                value="talos"
-                className="data-[state=active]:bg-marasca-orange data-[state=active]:text-white"
-              >
-                TALOS
-              </TabsTrigger>
-              <TabsTrigger
-                value="cutrag"
-                className="data-[state=active]:bg-marasca-orange data-[state=active]:text-white"
-              >
-                CUT RAG
-              </TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="laminas" className="space-y-6">
-              <div className="relative h-[300px] md:h-[400px]">
-                <Image
-                  src="/images/products-image.png"
-                  alt="Lâminas de tabaco"
-                  fill
-                  className="object-contain rounded-lg"
-                />
-              </div>
-              <div className="p-6 bg-gray-50 rounded-lg">
-                <h3 className="text-xl font-bold mb-3 text-marasca-orange">Lâminas</h3>
-                <p className="text-gray-700">
-                  As lâminas são a parte principal da folha de tabaco, após a remoção do talo central. São utilizadas principalmente para a produção de cigarros e outros produtos de tabaco. A qualidade da lâmina é determinada por diversos fatores como cor, textura, aroma e elasticidade.
-                </p>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="fibras" className="space-y-6">
-              <div className="relative h-[300px] md:h-[400px]">
-                <Image
-                  src="/images/products-image.png"
-                  alt="Fibras de tabaco"
-                  fill
-                  className="object-contain rounded-lg"
-                />
-              </div>
-              <div className="p-6 bg-gray-50 rounded-lg">
-                <h3 className="text-xl font-bold mb-3 text-marasca-orange">Fibras</h3>
-                <p className="text-gray-700">
-                  As fibras são partes do tabaco que passaram por um processo de desfiamento e são utilizadas principalmente na composição de blends específicos para cigarros e outros produtos de tabaco.
-                </p>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="fines" className="space-y-6">
-              <div className="relative h-[300px] md:h-[400px]">
-                <Image
-                  src="/images/products-image.png"
-                  alt="Fines de tabaco"
-                  fill
-                  className="object-contain rounded-lg"
-                />
-              </div>
-              <div className="p-6 bg-gray-50 rounded-lg">
-                <h3 className="text-xl font-bold mb-3 text-marasca-orange">Fines</h3>
-                <p className="text-gray-700">
-                  Fines são partículas pequenas de tabaco resultantes do processamento das folhas, utilizadas em misturas específicas para a produção de diversos produtos de tabaco.
-                </p>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="scraps" className="space-y-6">
-              <div className="relative h-[300px] md:h-[400px]">
-                <Image
-                  src="/images/products-image.png"
-                  alt="Scraps de tabaco"
-                  fill
-                  className="object-contain rounded-lg"
-                />
-              </div>
-              <div className="p-6 bg-gray-50 rounded-lg">
-                <h3 className="text-xl font-bold mb-3 text-marasca-orange">Scraps</h3>
-                <p className="text-gray-700">
-                  Scraps são fragmentos de tabaco resultantes do processamento das folhas, com aplicações específicas na indústria de tabaco para determinados tipos de produtos.
-                </p>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="talos" className="space-y-6">
-              <div className="relative h-[300px] md:h-[400px]">
-                <Image
-                  src="/images/products-image.png"
-                  alt="Talos de tabaco"
-                  fill
-                  className="object-contain rounded-lg"
-                />
-              </div>
-              <div className="p-6 bg-gray-50 rounded-lg">
-                <h3 className="text-xl font-bold mb-3 text-marasca-orange">Talos</h3>
-                <p className="text-gray-700">
-                  Os talos são a nervura central da folha de tabaco, separados durante o processamento. Eles possuem diversas aplicações na indústria, sendo processados para uso em blends específicos.
-                </p>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="cutrag" className="space-y-6">
-              <div className="relative h-[300px] md:h-[400px]">
-                <Image
-                  src="/images/products-image.png"
-                  alt="Cut Rag de tabaco"
-                  fill
-                  className="object-contain rounded-lg"
-                />
-              </div>
-              <div className="p-6 bg-gray-50 rounded-lg">
-                <h3 className="text-xl font-bold mb-3 text-marasca-orange">Cut Rag</h3>
-                <p className="text-gray-700">
-                  Cut Rag é o tabaco já cortado e processado, pronto para ser utilizado na produção de cigarros e outros produtos de tabaco. O corte é feito de acordo com especificações precisas para atender aos requisitos de cada cliente.
-                </p>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </section>
-
-      {/* Quality Commitment Section */}
+      {/* Main Products Section */}
       <section className="py-16 bg-marasca-light">
         <div className="container-marasca">
-          <h2 className="text-3xl font-bold mb-8 text-center text-marasca-dark">
-            Compromisso com a Qualidade
+          <h2 className="section-title text-marasca-dark">
+            Sản phẩm chính
           </h2>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-            <div>
-              <p className="text-gray-700 mb-6">
-                A Cao Bang Tobacco mantém um rigoroso controle de qualidade em todas as etapas do processo produtivo, desde a seleção de sementes até o produto final entregue aos clientes. Nossa equipe técnica especializada trabalha constantemente para garantir que os mais altos padrões sejam mantidos.
-              </p>
-              <p className="text-gray-700">
-                A empresa investe continuamente em tecnologia e treinamento para assegurar que nossos produtos atendam às expectativas do mercado internacional, respeitando todas as normas e regulamentações aplicáveis ao setor.
+            <div className="relative h-[300px] md:h-[400px]">
+              <Image
+                src="/images/products-image.png" // Use relevant product image
+                alt="Sản phẩm thuốc lá Cao Bang Tobacco"
+                fill
+                className="object-contain rounded-lg"
+              />
+            </div>
+            <div className="text-gray-700 space-y-4">
+              <h3 className="text-2xl font-semibold text-marasca-orange">Nguyên liệu thuốc lá</h3>
+              <p>Chúng tôi cung cấp đa dạng nguyên liệu thuốc lá chất lượng cao, bao gồm:</p>
+              <ul className="list-disc list-inside ml-4 space-y-1">
+                <li><strong>Thuốc lá lá nguyên liệu:</strong> Được trồng và thu hoạch tại các vùng nguyên liệu chuyên canh của công ty tại Cao Bằng, đảm bảo chất lượng đầu vào.</li>
+                <li><strong>Thuốc lá tách cọng (Láminas):</strong> Nguyên liệu thuốc lá lá sau khi được xử lý loại bỏ cọng, đạt tiêu chuẩn cho sản xuất thuốc lá điếu và các sản phẩm khác.</li>
+              </ul>
+              <h3 className="text-2xl font-semibold text-marasca-orange mt-6">Thuốc lá điếu</h3>
+              <p>
+                Công ty thực hiện bán buôn và bán lẻ các sản phẩm thuốc lá điếu thành phẩm, phục vụ thị trường nội địa tại Cao Bằng và thị trường xuất khẩu.
               </p>
             </div>
-            <div className="relative h-[300px]">
+          </div>
+        </div>
+      </section>
+
+       {/* Registered Business Lines Summary Section */}
+      <section className="py-16 bg-white">
+        <div className="container-marasca">
+          <h2 className="section-title text-marasca-dark">
+            Ngành nghề kinh doanh
+          </h2>
+          <div className="max-w-4xl mx-auto text-gray-700 space-y-4 text-center">
+             <p>
+              Ngoài lĩnh vực cốt lõi là thuốc lá, Công ty cổ phần thuốc lá Cao Bằng còn đăng ký hoạt động trong nhiều ngành nghề đa dạng khác nhằm hỗ trợ và mở rộng hoạt động kinh doanh, bao gồm:
+            </p>
+            <ul className="list-disc list-inside space-y-2 text-left inline-block">
+                <li>Trồng trọt và chế biến nông, lâm sản (chủ yếu là cây thuốc lá).</li>
+                <li>Sản xuất và kinh doanh sản phẩm thuốc lá.</li>
+                <li>Bán buôn nhiên liệu, vật liệu xây dựng, máy móc thiết bị, nông sản, thực phẩm, đồ uống.</li>
+                <li>Khai thác khoáng sản (trừ loại nhà nước cấm).</li>
+                <li>Dịch vụ kho bãi, lưu giữ hàng hóa, vận tải hàng hóa.</li>
+                <li>Cho thuê máy móc, thiết bị.</li>
+                <li>Tư vấn, giới thiệu việc làm, cung ứng lao động.</li>
+                <li>Xuất nhập khẩu các mặt hàng công ty kinh doanh.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Competitive Advantages Section */}
+      <section className="py-16 bg-marasca-light">
+        <div className="container-marasca">
+          <h2 className="section-title text-marasca-dark">
+            Lợi thế cạnh tranh
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+             <div className="text-gray-700 space-y-4">
+               <ul className="list-disc list-inside space-y-2">
+                <li>Hoạt động chuyên nghiệp trong lĩnh vực chế biến nguyên liệu, vùng trồng ổn định, chất lượng thuốc lá lá cao tại Nguyên Bình và Quảng Hòa.</li>
+                <li>Đội ngũ nhân viên kỹ thuật chuyên ngành lâu năm, trình độ cao (đại học và trên đại học).</li>
+                <li>Nhiều lợi thế trong việc nhập khẩu nguyên liệu thuốc lá.</li>
+                <li>Nguồn nguyên vật liệu đa dạng để sản xuất thuốc lá với chi phí tối ưu.</li>
+                <li>Kinh nghiệm trong tiêu thụ thuốc lá điếu, có khả năng mở rộng thị trường phía Bắc.</li>
+                <li>Nguồn lực tại chỗ và cam kết hợp tác lâu dài từ các đối tác kinh nghiệm.</li>
+                <li>Là thành viên của Hiệp hội thuốc lá Việt Nam.</li>
+              </ul>
+            </div>
+            <div className="relative h-[300px] md:h-[400px]">
               <Image
-                src="/images/about-image.jpg"
-                alt="Controle de qualidade Cao Bang Tobacco"
+                src="/images/about-image.jpg" // Use relevant image
+                alt="Lợi thế cạnh tranh Cao Bang Tobacco"
                 fill
                 className="object-cover rounded-lg"
               />
@@ -237,6 +130,7 @@ export default function AtividadesEProdutos() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }
