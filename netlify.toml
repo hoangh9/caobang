@@ -1,0 +1,6 @@
+[images]
+  remote_images = ["https://agenciatopo.net/.*", "https://ext.same-assets.com/.*"]
+
+[build]
+  command = "bun run build"
+  publish = "out"
