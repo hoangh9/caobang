@@ -1,17 +1,7 @@
-import HeroSection from "@/components/home/HeroSection";
-import AboutSection from "@/components/home/AboutSection";
-import ProductsSection from "@/components/home/ProductsSection";
-// import NewsSection from "@/components/home/NewsSection"; // Removed NewsSection
-import ValuesSection from "@/components/home/ValuesSection";
+import { redirect } from 'next/navigation';
+import { defaultLocale } from '@/i18n';
 
-export default function Home() {
-  return (
-    <>
-      <HeroSection />
-      <AboutSection />
-      <ProductsSection />
-      <ValuesSection />
-      {/* <NewsSection /> */}{/* Removed NewsSection */}
-    </>
-  );
+// Redirect from root to default locale
+export default function RootPage() {
+  redirect(`/${defaultLocale}`);
 }

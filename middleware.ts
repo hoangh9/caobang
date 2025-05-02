@@ -1,20 +1,30 @@
-import createMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from './src/i18n'; // Corrected import path
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { locales, defaultLocale } from './src/utils/i18n';
 
-export default createMiddleware({
-  // A list of all locales that are supported
-  locales: locales,
- 
-  // Used when no locale matches
-  defaultLocale: defaultLocale,
+// This middleware handles URL redirection to localized routes
+export function middleware(request: NextRequest) {
+  // Get pathname from request URL
+  const pathname = request.nextUrl.pathname;
 
-  // Don't prefix the URL for the default locale (optional, but common)
-  localePrefix: 'as-needed' // or 'always' or 'never'
-});
- 
+  // Check if the pathname already has a locale
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+
+  if (pathnameHasLocale) return NextResponse.next();
+
+  // Redirect if there is no locale
+  const locale = defaultLocale;
+  return NextResponse.redirect(
+    new URL(`/${locale}${pathname.startsWith('/') ? pathname : `/${pathname}`}`, request.url)
+  );
+}
+
+// Configure matcher for middleware
 export const config = {
-  // Match only internationalized pathnames
-  // This regex ensures the middleware runs only for paths that don't look like
-  // static files or API routes. Adjust if necessary.
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|images/).*)']
+  matcher: [
+    // Skip all internal paths (_next)
+    '/((?!_next|images|favicon.ico).*)',
+  ],
 };

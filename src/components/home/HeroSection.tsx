@@ -23,7 +23,7 @@ const HeroSection = () => {
   );
 
   return (
-    <section className="relative h-[80vh] min-h-[500px] w-full overflow-hidden border-4 border-red-500"> {/* Added border for debugging section */} 
+    <section className="relative h-[80vh] min-h-[500px] w-full overflow-hidden">
       <Carousel
         plugins={[plugin.current]}
         className="w-full h-full"
@@ -33,9 +33,9 @@ const HeroSection = () => {
           loop: true,
         }}
       >
-        <CarouselContent> {/* Removed h-full temporarily */}
+        <CarouselContent className="h-full">
           {images.map((src, index) => (
-            <CarouselItem key={index} className="bg-blue-500"> {/* Removed h-full, added bg-blue-500 for debugging item */}
+            <CarouselItem key={index} className="h-full">
               <div className="relative w-full h-full"> 
                 <Image
                   src={src}
@@ -48,6 +48,8 @@ const HeroSection = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
+        <CarouselPrevious className="left-4" />
+        <CarouselNext className="right-4" />
       </Carousel>
     </section>
   );

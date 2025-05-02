@@ -1,5 +1,10 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // output: 'export', // Removed for server-side rendering with next-intl
   distDir: 'out',
   images: {
     remotePatterns: [
@@ -21,7 +26,7 @@ const nextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true,
-  }
+  },
 };
 
-module.exports = nextConfig;
+export default withNextIntl(nextConfig);

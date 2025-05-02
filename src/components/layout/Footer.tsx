@@ -1,12 +1,33 @@
 "use client";
 
-// Use Link from next-intl/navigation
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl'; 
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { getLocaleFromPathname } from '@/utils/i18n'; 
 
 const Footer = () => {
-  const t = useTranslations('Footer'); 
+  const [translations, setTranslations] = useState<any>({});
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  
+  // Load translations
+  useEffect(() => {
+    const loadTranslations = async () => {
+      try {
+        const { default: messages } = await import(`@/app/messages/${locale}.json`);
+        setTranslations(messages.Footer || {});
+      } catch (error) {
+        console.error('Failed to load translations', error);
+      }
+    };
+    
+    loadTranslations();
+  }, [locale]);
+
+  const t = (key: string) => {
+    return translations[key] || key;
+  }; 
 
   return (
     <footer>
@@ -25,7 +46,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Logo and statement */}
             <div className="md:col-span-1">
-              <Link href="/" className="block mb-4">
+              <Link href={`/${locale}`} className="block mb-4">
                 <Image
                   src="/images/logo.png"
                   alt="Cao Bang Tobacco"

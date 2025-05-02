@@ -1,9 +1,10 @@
 import {getRequestConfig} from 'next-intl/server';
 import {notFound} from 'next/navigation'; // Import notFound for handling invalid locales
+import intlConfig from '../next-intl.config';
  
-// Define the locales you want to support
-export const locales = ['vi', 'en', 'zh'];
-export const defaultLocale = 'vi';
+// Export locales and defaultLocale from the config
+export const locales = intlConfig.locales;
+export const defaultLocale = intlConfig.defaultLocale;
  
 export default getRequestConfig(async ({locale}) => {
   // Validate that the incoming `locale` parameter is valid

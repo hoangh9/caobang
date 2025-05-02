@@ -539,10 +539,9 @@ export default function AtividadesEProdutos() {
           <h2 className="section-title text-marasca-dark">
             Lợi thế cạnh tranh
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
-            <div className="text-gray-700 space-y-4 bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold text-marasca-orange mb-4">Những ưu thế nổi bật</h3>
-              <ul className="list-disc list-inside space-y-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+             <div className="text-gray-700 space-y-4">
+               <ul className="list-disc list-inside space-y-2">
                 <li>Hoạt động chuyên nghiệp trong lĩnh vực chế biến nguyên liệu, vùng trồng ổn định, chất lượng thuốc lá lá cao tại Nguyên Bình và Quảng Hòa.</li>
                 <li>Đội ngũ nhân viên kỹ thuật chuyên ngành lâu năm, trình độ cao (đại học và trên đại học).</li>
                 <li>Nhiều lợi thế trong việc nhập khẩu nguyên liệu thuốc lá.</li>
@@ -552,9 +551,9 @@ export default function AtividadesEProdutos() {
                 <li>Là thành viên của Hiệp hội thuốc lá Việt Nam.</li>
               </ul>
             </div>
-            <div className="relative h-[300px] md:h-[350px] bg-white p-4 rounded-lg shadow-sm">
+            <div className="relative h-[300px] md:h-[400px]">
               <Image
-                src="/images/about-image.jpg"
+                src="/images/about-image.jpg" // Use relevant image
                 alt="Lợi thế cạnh tranh Cao Bang Tobacco"
                 fill
                 className="object-cover rounded-lg"

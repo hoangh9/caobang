@@ -1,16 +1,11 @@
-import "./globals.css";
+import "../globals.css";
 import { Inter } from "next/font/google";
-import { ClientBody } from "./ClientBody"; 
+import { ClientBody } from "../ClientBody"; 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import {NextIntlClientProvider, useMessages} from 'next-intl';
+import { isValidLocale, defaultLocale } from '@/utils/i18n';
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "Cao Bang Tobacco", 
-  description: "Chất lượng và sự phát triển bền vững",
-};
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -19,34 +14,41 @@ interface RootLayoutProps {
   };
 }
 
+export async function generateMetadata({ params: { locale } }: RootLayoutProps) {
+  return {
+    title: "Cao Bang Tobacco",
+    description: "Chất lượng và sự phát triển bền vững",
+  };
+}
+
+// Generate static params for all supported locales
+export function generateStaticParams() {
+  return [
+    { locale: 'vi' },
+    { locale: 'en' },
+    { locale: 'zh' }
+  ];
+}
+
 export default function RootLayout({ 
   children,
   params: { locale } 
 }: Readonly<RootLayoutProps>) {
-  const messages = useMessages();
-
-  // Validate messages - if they are missing, something is wrong upstream
-  if (!messages) {
-    console.error("Messages not loaded for locale:", locale);
-    // Handle error appropriately, maybe render a fallback or throw
-  }
+  // Verify the locale is valid, otherwise use the default
+  const validLocale = isValidLocale(locale) ? locale : defaultLocale;
 
   return (
-    <html lang={locale}> 
+    <html lang={validLocale}> 
       <body className={inter.className}>
-        {/* Provider wraps Header, Footer, and the main content area */}
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="min-h-screen flex flex-col">
-            <Header />
-            <main className="flex-grow">
-              {/* ClientBody now only wraps the page content if necessary */}
-              <ClientBody>
-                {children}
-              </ClientBody>
-            </main>
-            <Footer />
-          </div>
-        </NextIntlClientProvider>
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <main className="flex-grow">
+            <ClientBody>
+              {children}
+            </ClientBody>
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

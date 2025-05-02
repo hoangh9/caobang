@@ -20,7 +20,7 @@ const AboutSection = () => {
               Chuyên cung cấp các sản phẩm nguyên liệu thuốc lá lá, nguyên liệu thuốc lá tách cọng cho các khách hàng. Bán buôn, bán lẻ sản phẩm thuốc lá điếu tại thị trường tỉnh Cao Bằng và xuất khẩu.
             </p>
             <div className="mt-8">
-              <Link href="/quem-somos">
+              <Link href="/vi/quem-somos">
                 <Button className="bg-marasca-orange hover:bg-marasca-orange/90">
                   XEM THÊM VỀ CHÚNG TÔI
                 </Button>
